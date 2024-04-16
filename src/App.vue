@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { get, set } from '@vueuse/core';
+
 import { getHighlighterCore } from 'shiki/core';
 import githubLightTheme from 'shiki/themes/github-light.mjs';
 import githubDarkTheme from 'shiki/themes/github-dark.mjs';
@@ -6,9 +8,16 @@ import nixLang from 'shiki/langs/nix.mjs';
 
 import { destr } from 'destr';
 
-import { get, set } from '@vueuse/core';
+const isDarkTheme = useDark();
+const prefersDark = usePreferredDark();
 
-const isDark = useDark();
+useFavicon(
+	computed(() => (get(prefersDark) ? 'favicon-dark.svg' : 'favicon.svg')),
+	{
+		baseUrl: '/',
+		rel: 'icon',
+	},
+);
 
 const input = useStorage('input', JSON.stringify({ a: true, b: 1, c: 'foo' }));
 const converted = ref('');
@@ -53,7 +62,7 @@ async function run() {
 		output,
 		highlighter.codeToHtml(get(converted), {
 			lang: 'nix',
-			theme: get(isDark) ? 'github-dark' : 'github-light',
+			theme: get(isDarkTheme) ? 'github-dark' : 'github-light',
 		}),
 	);
 }
@@ -68,7 +77,7 @@ function copy() {
 }
 
 watch(
-	[input, isDark],
+	[input, isDarkTheme],
 	(n, o) => {
 		const changed = o !== n;
 		if (changed) run();
@@ -86,7 +95,7 @@ if (import.meta.hot) {
 <template>
 	<div h-100vh w-full px4 pt-4>
 		<header flex="~ justify-between">
-			<h1>JSON to Nix</h1>
+			<h1 class="text-xl">JSON to Nix</h1>
 
 			<div flex="~ row gap-2">
 				<a
@@ -102,8 +111,8 @@ if (import.meta.hot) {
 					border="~ base rounded"
 					p2
 					hover="bg-active"
-					:aria-label="`Toggle theme to ${isDark ? 'light' : 'dark'}`"
-					@click="isDark = !isDark"
+					:aria-label="`Toggle theme to ${isDarkTheme ? 'light' : 'dark'}`"
+					@click="isDarkTheme = !isDarkTheme"
 				>
 					<div dark:i-carbon-moon i-carbon-sun />
 				</button>
@@ -117,7 +126,7 @@ if (import.meta.hot) {
 				px3
 				py1
 				:class="`${
-					isDark ? 'bg-[#24292F] ' : ''
+					isDarkTheme ? 'bg-[#24292F] ' : ''
 				}w-full md:w-[50vw] h-[40vh] md:h-[70vh]`"
 				spellcheck="false"
 				autocorrect="off"
@@ -130,7 +139,7 @@ if (import.meta.hot) {
 				relative
 				of-auto
 				:class="`${
-					isDark ? 'bg-[#24292F] ' : ''
+					isDarkTheme ? 'bg-[#24292F] ' : ''
 				}w-full md:w-[50vw] h-[40vh] md:h-[70vh]`"
 			>
 				<button
