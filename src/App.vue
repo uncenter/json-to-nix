@@ -27,17 +27,17 @@ function jsonToNix(json: unknown, level: number = 1): string | undefined {
 		json === true ||
 		json === false
 	)
-		return `${JSON.stringify(json)};`;
+		return `${JSON.stringify(json)}`;
 	else if (Array.isArray(json))
-		return `[\n${json.map((item) => `${indent}"${item}"`).join('\n')}\n${subindent}];`;
+		return `[\n${json.map((item) => `${indent}${jsonToNix(item)}`).join('\n')}\n${subindent}]`;
 	else {
 		let nix = '{\n';
 		for (const [key, value] of Object.entries(
 			json as Record<string, boolean | string | null>,
 		)) {
-			nix += `${indent}${key} = ${jsonToNix(value, level + 1)}\n`;
+			nix += `${indent}${key} = ${jsonToNix(value, level + 1)};\n`;
 		}
-		return nix?.trimEnd() + `\n${subindent}};`;
+		return nix?.trimEnd() + `\n${subindent}}`;
 	}
 }
 
