@@ -1,6 +1,6 @@
 # JSON to Nix
 
-A web app to quickly convert JSON to Nix values. And yes I now know there is a built-in for that. But like, on the web amiright?
+A web app to quickly convert JSON to Nix values. And yes I now know there is [a built-in](https://noogle.dev/f/builtins/fromJSON) for that. But like, on the web amiright?
 
 ## Development
 
