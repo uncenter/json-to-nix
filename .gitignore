@@ -1,0 +1,7 @@
+node_modules/
+dist/
+
+auto-imports.d.ts
+
+.DS_Store
+Thumbs.db
