@@ -1,4 +1,7 @@
-function jsonToNix(json: unknown, level: number = 1): string | undefined {
+export function jsonToNix(
+	json: unknown,
+	level: number = 1,
+): string | undefined {
 	const indent = '  '.repeat(level);
 	const subindent = '  '.repeat(level - 1);
 	if (

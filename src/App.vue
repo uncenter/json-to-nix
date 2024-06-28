@@ -7,6 +7,7 @@ import githubDarkTheme from 'shiki/themes/github-dark.mjs';
 import nixLang from 'shiki/langs/nix.mjs';
 
 import { destr } from 'destr';
+import { jsonToNix } from './lib';
 
 const isDarkTheme = useDark();
 const prefersDark = usePreferredDark();
