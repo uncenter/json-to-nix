@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { get, set } from '@vueuse/core';
 
-import { getHighlighterCore } from 'shiki/core';
+import { createHighlighterCore } from 'shiki/core';
 import githubLightTheme from 'shiki/themes/github-light.mjs';
 import githubDarkTheme from 'shiki/themes/github-dark.mjs';
 import nixLang from 'shiki/langs/nix.mjs';
@@ -52,7 +52,7 @@ function jsonToNix(json: unknown, level: number = 1): string | undefined {
 
 async function run() {
 	set(converted, jsonToNix(destr(get(input) || null)));
-	const highlighter = await getHighlighterCore({
+	const highlighter = await createHighlighterCore({
 		themes: [githubLightTheme, githubDarkTheme],
 		langs: [nixLang],
 		loadWasm: () => import('shiki/wasm'),
