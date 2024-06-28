@@ -38,7 +38,7 @@ function jsonToNix(json: unknown, level: number = 1): string | undefined {
 	)
 		return `${JSON.stringify(json)}`;
 	else if (Array.isArray(json))
-		return `[\n${json.map((item) => `${indent}${jsonToNix(item)}`).join('\n')}\n${subindent}]`;
+		return `[\n${json.map((item) => `${indent}${jsonToNix(item, level + 1)}`).join('\n')}\n${subindent}]`;
 	else {
 		let nix = '{\n';
 		for (const [key, value] of Object.entries(
