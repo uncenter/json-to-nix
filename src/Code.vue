@@ -6,8 +6,8 @@ import githubLightTheme from 'shiki/themes/github-light.mjs';
 import githubDarkTheme from 'shiki/themes/github-dark.mjs';
 import nixLang from 'shiki/langs/nix.mjs';
 
-import { destr } from 'destr';
-import { jsonToNix } from './lib';
+import JSONC from 'tiny-jsonc';
+import { nixify } from './lib';
 
 const isDarkTheme = useDark();
 
@@ -25,15 +25,21 @@ const copied = ref(false);
 const clipboard = useClipboard();
 
 async function run() {
-	set(converted, jsonToNix(destr(get(input) || null)));
+	try {
+		const parsed = JSONC.parse(get(input));
+		const nixified = nixify(parsed || null);
+		set(converted, nixified);
 
-	set(
-		output,
-		highlighter.codeToHtml(get(converted), {
-			lang: 'nix',
-			theme: get(isDarkTheme) ? 'github-dark' : 'github-light',
-		}),
-	);
+		set(
+			output,
+			highlighter.codeToHtml(get(converted), {
+				lang: 'nix',
+				theme: get(isDarkTheme) ? 'github-dark' : 'github-light',
+			}),
+		);
+	} catch (e) {
+		set(output, `<span style="color: red;">${(e as Error).message}</span>`);
+	}
 }
 
 function copy() {

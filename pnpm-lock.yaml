@@ -10,13 +10,13 @@ importers:
     dependencies:
       '@vueuse/core':
         specifier: ^10.11.0
-        version: 10.11.0(vue@3.4.22)
-      destr:
-        specifier: ^2.0.3
-        version: 2.0.3
+        version: 10.11.0(vue@3.4.22(typescript@5.5.2))
       shiki:
         specifier: 1.9.1
         version: 1.9.1
+      tiny-jsonc:
+        specifier: ^1.0.1
+        version: 1.0.1
       vue:
         specifier: ^3.4.22
         version: 3.4.22(typescript@5.5.2)
@@ -29,7 +29,7 @@ importers:
         version: 0.61.0
       '@vitejs/plugin-vue':
         specifier: ^5.0.5
-        version: 5.0.5(vite@5.3.2)(vue@3.4.22)
+        version: 5.0.5(vite@5.3.2)(vue@3.4.22(typescript@5.5.2))
       prettier:
         specifier: ^3.3.2
         version: 3.3.2
@@ -38,10 +38,10 @@ importers:
         version: 5.5.2
       unocss:
         specifier: ^0.61.0
-        version: 0.61.0(postcss@8.4.38)(vite@5.3.2)
+        version: 0.61.0(postcss@8.4.38)(rollup@4.18.0)(vite@5.3.2)
       unplugin-auto-import:
         specifier: ^0.17.6
-        version: 0.17.6(@vueuse/core@10.11.0)
+        version: 0.17.6(@vueuse/core@10.11.0(vue@3.4.22(typescript@5.5.2)))(rollup@4.18.0)
       vite:
         specifier: ^5.3.2
         version: 5.3.2
@@ -1035,6 +1035,9 @@ packages:
     resolution: {integrity: sha512-QjVjwdXIt408MIiAqCX4oUKsgU2EqAGzs2Ppkm4aQYbjm+ZEWEcW4SfFNTr4uMNZma0ey4f5lgLrkB0aX0QMow==}
     engines: {node: '>=4'}
 
+  tiny-jsonc@1.0.1:
+    resolution: {integrity: sha512-ik6BCxzva9DoiEfDX/li0L2cWKPPENYvixUprFdl3YPi4bZZUhDnNI9YUkacrv+uIG90dnxR5mNqaoD6UhD6Bw==}
+
   to-fast-properties@2.0.0:
     resolution: {integrity: sha512-/OaKK0xYrs3DmxRYqL/yDc+FxFUVYhDlXMhRmv3z915w2HF1tnN1omB354j8VUGO/hbRzyD6Y3sA7v7GS/ceog==}
     engines: {node: '>=4'}
@@ -1528,11 +1531,13 @@ snapshots:
 
   '@polka/url@1.0.0-next.25': {}
 
-  '@rollup/pluginutils@5.1.0':
+  '@rollup/pluginutils@5.1.0(rollup@4.18.0)':
     dependencies:
       '@types/estree': 1.0.5
       estree-walker: 2.0.2
       picomatch: 2.3.1
+    optionalDependencies:
+      rollup: 4.18.0
 
   '@rollup/rollup-android-arm-eabi@4.18.0':
     optional: true
@@ -1588,19 +1593,20 @@ snapshots:
 
   '@types/web-bluetooth@0.0.20': {}
 
-  '@unocss/astro@0.61.0(vite@5.3.2)':
+  '@unocss/astro@0.61.0(rollup@4.18.0)(vite@5.3.2)':
     dependencies:
       '@unocss/core': 0.61.0
       '@unocss/reset': 0.61.0
-      '@unocss/vite': 0.61.0(vite@5.3.2)
+      '@unocss/vite': 0.61.0(rollup@4.18.0)(vite@5.3.2)
+    optionalDependencies:
       vite: 5.3.2
     transitivePeerDependencies:
       - rollup
 
-  '@unocss/cli@0.61.0':
+  '@unocss/cli@0.61.0(rollup@4.18.0)':
     dependencies:
       '@ampproject/remapping': 2.3.0
-      '@rollup/pluginutils': 5.1.0
+      '@rollup/pluginutils': 5.1.0(rollup@4.18.0)
       '@unocss/config': 0.61.0
       '@unocss/core': 0.61.0
       '@unocss/preset-uno': 0.61.0
@@ -1724,10 +1730,10 @@ snapshots:
     dependencies:
       '@unocss/core': 0.61.0
 
-  '@unocss/vite@0.61.0(vite@5.3.2)':
+  '@unocss/vite@0.61.0(rollup@4.18.0)(vite@5.3.2)':
     dependencies:
       '@ampproject/remapping': 2.3.0
-      '@rollup/pluginutils': 5.1.0
+      '@rollup/pluginutils': 5.1.0(rollup@4.18.0)
       '@unocss/config': 0.61.0
       '@unocss/core': 0.61.0
       '@unocss/inspector': 0.61.0
@@ -1740,7 +1746,7 @@ snapshots:
     transitivePeerDependencies:
       - rollup
 
-  '@vitejs/plugin-vue@5.0.5(vite@5.3.2)(vue@3.4.22)':
+  '@vitejs/plugin-vue@5.0.5(vite@5.3.2)(vue@3.4.22(typescript@5.5.2))':
     dependencies:
       vite: 5.3.2
       vue: 3.4.22(typescript@5.5.2)
@@ -1790,7 +1796,7 @@ snapshots:
       '@vue/shared': 3.4.22
       csstype: 3.1.3
 
-  '@vue/server-renderer@3.4.22(vue@3.4.22)':
+  '@vue/server-renderer@3.4.22(vue@3.4.22(typescript@5.5.2))':
     dependencies:
       '@vue/compiler-ssr': 3.4.22
       '@vue/shared': 3.4.22
@@ -1798,21 +1804,21 @@ snapshots:
 
   '@vue/shared@3.4.22': {}
 
-  '@vueuse/core@10.11.0(vue@3.4.22)':
+  '@vueuse/core@10.11.0(vue@3.4.22(typescript@5.5.2))':
     dependencies:
       '@types/web-bluetooth': 0.0.20
       '@vueuse/metadata': 10.11.0
-      '@vueuse/shared': 10.11.0(vue@3.4.22)
-      vue-demi: 0.14.8(vue@3.4.22)
+      '@vueuse/shared': 10.11.0(vue@3.4.22(typescript@5.5.2))
+      vue-demi: 0.14.8(vue@3.4.22(typescript@5.5.2))
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
 
   '@vueuse/metadata@10.11.0': {}
 
-  '@vueuse/shared@10.11.0(vue@3.4.22)':
+  '@vueuse/shared@10.11.0(vue@3.4.22(typescript@5.5.2))':
     dependencies:
-      vue-demi: 0.14.8(vue@3.4.22)
+      vue-demi: 0.14.8(vue@3.4.22(typescript@5.5.2))
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
@@ -2205,6 +2211,8 @@ snapshots:
     dependencies:
       has-flag: 3.0.0
 
+  tiny-jsonc@1.0.1: {}
+
   to-fast-properties@2.0.0: {}
 
   to-regex-range@5.0.1:
@@ -2223,9 +2231,9 @@ snapshots:
       defu: 6.1.4
       jiti: 1.21.6
 
-  unimport@3.7.2:
+  unimport@3.7.2(rollup@4.18.0):
     dependencies:
-      '@rollup/pluginutils': 5.1.0
+      '@rollup/pluginutils': 5.1.0(rollup@4.18.0)
       acorn: 8.12.0
       escape-string-regexp: 5.0.0
       estree-walker: 3.0.3
@@ -2241,10 +2249,10 @@ snapshots:
     transitivePeerDependencies:
       - rollup
 
-  unocss@0.61.0(postcss@8.4.38)(vite@5.3.2):
+  unocss@0.61.0(postcss@8.4.38)(rollup@4.18.0)(vite@5.3.2):
     dependencies:
-      '@unocss/astro': 0.61.0(vite@5.3.2)
-      '@unocss/cli': 0.61.0
+      '@unocss/astro': 0.61.0(rollup@4.18.0)(vite@5.3.2)
+      '@unocss/cli': 0.61.0(rollup@4.18.0)
       '@unocss/core': 0.61.0
       '@unocss/extractor-arbitrary-variants': 0.61.0
       '@unocss/postcss': 0.61.0(postcss@8.4.38)
@@ -2262,24 +2270,26 @@ snapshots:
       '@unocss/transformer-compile-class': 0.61.0
       '@unocss/transformer-directives': 0.61.0
       '@unocss/transformer-variant-group': 0.61.0
-      '@unocss/vite': 0.61.0(vite@5.3.2)
+      '@unocss/vite': 0.61.0(rollup@4.18.0)(vite@5.3.2)
+    optionalDependencies:
       vite: 5.3.2
     transitivePeerDependencies:
       - postcss
       - rollup
       - supports-color
 
-  unplugin-auto-import@0.17.6(@vueuse/core@10.11.0):
+  unplugin-auto-import@0.17.6(@vueuse/core@10.11.0(vue@3.4.22(typescript@5.5.2)))(rollup@4.18.0):
     dependencies:
       '@antfu/utils': 0.7.10
-      '@rollup/pluginutils': 5.1.0
-      '@vueuse/core': 10.11.0(vue@3.4.22)
+      '@rollup/pluginutils': 5.1.0(rollup@4.18.0)
       fast-glob: 3.3.2
       local-pkg: 0.5.0
       magic-string: 0.30.10
       minimatch: 9.0.5
-      unimport: 3.7.2
+      unimport: 3.7.2(rollup@4.18.0)
       unplugin: 1.10.1
+    optionalDependencies:
+      '@vueuse/core': 10.11.0(vue@3.4.22(typescript@5.5.2))
     transitivePeerDependencies:
       - rollup
 
@@ -2304,7 +2314,7 @@ snapshots:
     optionalDependencies:
       fsevents: 2.3.3
 
-  vue-demi@0.14.8(vue@3.4.22):
+  vue-demi@0.14.8(vue@3.4.22(typescript@5.5.2)):
     dependencies:
       vue: 3.4.22(typescript@5.5.2)
 
@@ -2313,8 +2323,9 @@ snapshots:
       '@vue/compiler-dom': 3.4.22
       '@vue/compiler-sfc': 3.4.22
       '@vue/runtime-dom': 3.4.22
-      '@vue/server-renderer': 3.4.22(vue@3.4.22)
+      '@vue/server-renderer': 3.4.22(vue@3.4.22(typescript@5.5.2))
       '@vue/shared': 3.4.22
+    optionalDependencies:
       typescript: 5.5.2
 
   webpack-sources@3.2.3: {}

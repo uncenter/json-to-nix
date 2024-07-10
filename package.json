@@ -9,8 +9,8 @@
 	},
 	"dependencies": {
 		"@vueuse/core": "^10.11.0",
-		"destr": "^2.0.3",
 		"shiki": "1.9.1",
+		"tiny-jsonc": "^1.0.1",
 		"vue": "^3.4.22"
 	},
 	"devDependencies": {
