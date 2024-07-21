@@ -16,7 +16,8 @@ export function nixify(value: unknown, level: number = 1): string | undefined {
 		for (const [k, v] of Object.entries(
 			value as Record<string, boolean | string | null>,
 		)) {
-			nix += `${indent}${k.includes(' ') ? `"${k}"` : k} = ${nixify(v, level + 1)};\n`;
+			// https://nix.dev/manual/nix/2.18/language/values.html#attribute-set
+			nix += `${indent}${k.match(/^[a-zA-Z0-9_'-.]*$/) ? k : `"${k}"`} = ${nixify(v, level + 1)};\n`;
 		}
 		return nix?.trimEnd() + `\n${subindent}}`;
 	}
