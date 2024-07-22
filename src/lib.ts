@@ -17,7 +17,7 @@ export function nixify(value: unknown, level: number = 1): string | undefined {
 			value as Record<string, boolean | string | null>,
 		)) {
 			// https://nix.dev/manual/nix/2.18/language/values.html#attribute-set
-			nix += `${indent}${k.match(/^[a-zA-Z0-9_'-.]*$/) ? k : `"${k}"`} = ${nixify(v, level + 1)};\n`;
+			nix += `${indent}${k.match(/^[a-zA-Z0-9_'-]*$/) ? k : `"${k}"`} = ${nixify(v, level + 1)};\n`;
 		}
 		return nix?.trimEnd() + `\n${subindent}}`;
 	}
