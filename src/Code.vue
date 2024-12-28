@@ -6,8 +6,7 @@ import githubLightTheme from 'shiki/themes/github-light.mjs';
 import githubDarkTheme from 'shiki/themes/github-dark.mjs';
 import nixLang from 'shiki/langs/nix.mjs';
 
-import JSONC from 'tiny-jsonc';
-import { nixify } from './lib';
+import { jsonToNix } from './lib';
 
 const isDarkTheme = useDark();
 
@@ -26,8 +25,7 @@ const clipboard = useClipboard();
 
 async function run() {
 	try {
-		const parsed = JSONC.parse(get(input));
-		const nixified = nixify(parsed || null);
+		const nixified = jsonToNix(get(input));
 		set(converted, nixified);
 
 		set(
