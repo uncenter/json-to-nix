@@ -2,13 +2,14 @@ export function nixify(value: unknown, level: number = 1): string | undefined {
 	const indent = '  '.repeat(level);
 	const subindent = '  '.repeat(level - 1);
 	if (
-		typeof value === 'string' ||
 		Number.isInteger(value) ||
 		value === null ||
 		value === true ||
 		value === false
 	)
 		return `${JSON.stringify(value)}`;
+	else if (typeof value === 'string')
+		return `${JSON.stringify(value).replaceAll("$", "\\$")}`;
 	else if (Array.isArray(value))
 		return `[\n${value.map((item) => `${indent}${nixify(item, level + 1)}`).join('\n')}\n${subindent}]`;
 	else {
