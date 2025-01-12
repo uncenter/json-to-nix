@@ -8,15 +8,15 @@ importers:
 
   .:
     dependencies:
+      '@humanwhocodes/momoa':
+        specifier: ^3.3.5
+        version: 3.3.5
       '@vueuse/core':
         specifier: ^12.2.0
         version: 12.2.0(typescript@5.7.2)
       shiki:
         specifier: 1.24.4
         version: 1.24.4
-      tiny-jsonc:
-        specifier: ^1.0.1
-        version: 1.0.1
       vue:
         specifier: ^3.5.13
         version: 3.5.13(typescript@5.7.2)
@@ -368,6 +368,10 @@ packages:
     engines: {node: '>=18'}
     cpu: [x64]
     os: [win32]
+
+  '@humanwhocodes/momoa@3.3.5':
+    resolution: {integrity: sha512-NI9codbQNjw9g4SS/cOizi8JDZ93B3oGVko8M3y0XF3gITaGDSQqea35V8fswWehnRQBLxPfZY5TJnuNhNCEzA==}
+    engines: {node: '>=18'}
 
   '@iconify-json/carbon@1.2.5':
     resolution: {integrity: sha512-aI3TEzOrUDGhs74zIT3ym/ZQBUEziyu8JifntX2Hb4siVzsP5sQ/QEfVdmcCUj37kQUYT3TYBSeAw2vTfCJx9w==}
@@ -1019,9 +1023,6 @@ packages:
   strip-literal@2.1.1:
     resolution: {integrity: sha512-631UJ6O00eNGfMiWG78ck80dfBab8X6IVFB51jZK5Icd7XAs60Z5y7QdSd/wGIklnWvRbUNloVzhOKKmutxQ6Q==}
 
-  tiny-jsonc@1.0.1:
-    resolution: {integrity: sha512-ik6BCxzva9DoiEfDX/li0L2cWKPPENYvixUprFdl3YPi4bZZUhDnNI9YUkacrv+uIG90dnxR5mNqaoD6UhD6Bw==}
-
   tinyexec@0.3.1:
     resolution: {integrity: sha512-WiCJLEECkO18gwqIp6+hJg0//p23HXp4S+gGtAKu3mI2F2/sXC4FvHvXvB0zJVVaTPhx1/tOwdbRsa1sOBIKqQ==}
 
@@ -1344,6 +1345,8 @@ snapshots:
 
   '@esbuild/win32-x64@0.24.2':
     optional: true
+
+  '@humanwhocodes/momoa@3.3.5': {}
 
   '@iconify-json/carbon@1.2.5':
     dependencies:
@@ -2137,8 +2140,6 @@ snapshots:
   strip-literal@2.1.1:
     dependencies:
       js-tokens: 9.0.1
-
-  tiny-jsonc@1.0.1: {}
 
   tinyexec@0.3.1: {}
 
