@@ -3,7 +3,7 @@ export function nixify(value: unknown, level: number = 1): string | undefined {
 	const subindent = '  '.repeat(level - 1);
 	if (
 		typeof value === 'string' ||
-		Number.isInteger(value) ||
+		typeof value === 'number'||
 		value === null ||
 		value === true ||
 		value === false
